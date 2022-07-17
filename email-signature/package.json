@@ -1,5 +1,5 @@
 {
-  "name": "email-signature",
+  "name": "signed-email-creator",
   "private": true,
   "version": "0.0.1",
   "type": "module",
