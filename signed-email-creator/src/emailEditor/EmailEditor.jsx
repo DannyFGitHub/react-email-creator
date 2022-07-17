@@ -21,10 +21,6 @@ export const GUIEmailEditor = (props) => {
   const onReady = () => {
     // editor is ready
     // console.log("onReady");
-    let els = document.getElementsByClassName("blockbuilder-branding");
-    els.forEach((el) => {
-      el.style.display = "none";
-    });
   };
 
   return (
