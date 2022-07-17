@@ -1,9 +1,9 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import { version } from "./version.js";
 import { useEffect } from "react";
 import { GUIEmailEditor } from "./emailEditor/EmailEditor";
 import { themeChange } from "theme-change";
+import logo from "./assets/f7.svg";
 
 function App() {
   const [toggle, setToggle] = useState(false);
@@ -48,20 +48,6 @@ function App() {
   return (
     <div>
       <div className="flex flex-col">
-        {/* <div className="self-center justify-center">
-          {themes.map((theme, i) => {
-            return (
-              <button
-                className="btn btn-primary"
-                key={i}
-                data-set-theme={theme}
-                data-act-class="ACTIVECLASS"
-              >
-                {theme}
-              </button>
-            );
-          })}
-        </div> */}
         <div>
           <div className="flex flex-row justify-between">
             <div className="p-4">
@@ -69,19 +55,9 @@ function App() {
                 Email Editor
               </h1>
             </div>
-            <div className="flex flex-row items-center">
-              <div className="label label-text align-middle">Light</div>
-              <input
-                type="checkbox"
-                className="toggle toggle-lg"
-                data-toggle-theme="dracula,cupcake"
-                data-act-class="ACTIVECLASS"
-                checked={toggle}
-                onChange={() => {
-                  setToggle(!toggle);
-                }}
-              />
-              <div className="label label-text align-middle">Dark</div>
+            <div className="flex flex-row items-center p-4">
+              <div className="label label-text align-middle"></div>
+              <img src={logo} className="w-14 h-14" />
             </div>
           </div>
         </div>
