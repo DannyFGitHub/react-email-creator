@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { version } from "./version.js";
-import { useEffect } from "react";
 import { GUIEmailEditor } from "./emailEditor/EmailEditor";
 import { themeChange } from "theme-change";
 import logo from "./assets/f7.svg";
+import copy from "copy-to-clipboard";
 
 function App() {
   const [toggle, setToggle] = useState(false);
@@ -50,7 +50,7 @@ function App() {
       <div className="flex flex-col">
         <div>
           <div className="flex flex-row justify-between">
-            <div className="p-4">
+            <div className="m-8">
               <h1 className="text-3xl font-bold self-center justify-center">
                 Email Editor
               </h1>
@@ -61,7 +61,16 @@ function App() {
             </div>
           </div>
         </div>
-        <GUIEmailEditor />
+        <GUIEmailEditor
+          setEmailHTML={(html) => {
+            copy(html);
+            alert("Copied HTML to clipboard");
+          }}
+          exportDesign={(design) => {
+            copy(JSON.stringify(design));
+            alert("Copied Design (Template) to clipboard");
+          }}
+        />
       </div>
     </div>
   );

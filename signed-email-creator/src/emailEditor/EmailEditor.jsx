@@ -7,7 +7,14 @@ export const GUIEmailEditor = (props) => {
   const exportHtml = () => {
     emailEditorRef.current.editor.exportHtml((data) => {
       const { design, html } = data;
-      console.log("exportHtml", html);
+      props.setEmailHTML(html);
+    });
+  };
+
+  const exportDesign = () => {
+    emailEditorRef.current.editor.exportHtml((data) => {
+      const { design, html } = data;
+      props.setDesign(design);
     });
   };
 
@@ -18,23 +25,33 @@ export const GUIEmailEditor = (props) => {
     // emailEditorRef.current.editor.loadDesign(templateJson);
   };
 
-  const onReady = () => {
-    // editor is ready
-    // console.log("onReady");
-  };
+  const onReady = () => {};
 
   return (
-    <div>
-      <EmailEditor
-        minHeight={"100vh"}
-        ref={emailEditorRef}
-        onLoad={onLoad}
-        onReady={onReady}
-      />
-      <div className="flex flex-col">
-        <button onClick={exportHtml} className="btn btn-primary btn-lg">
+    <div className="flex flex-col">
+      <div className="flex flex-row justify-end p-1">
+        <button onClick={exportHtml} className="btn btn-primary btn-sm m-2">
           Export HTML
         </button>
+        <button onClick={exportDesign} className="btn btn-primary btn-sm m-2">
+          Export Design
+        </button>
+      </div>
+      <div>
+        <EmailEditor
+          minHeight={"80vh"}
+          appearance={{
+            theme: "dark",
+            panels: {
+              tools: {
+                dock: "left",
+              },
+            },
+          }}
+          ref={emailEditorRef}
+          onLoad={onLoad}
+          onReady={onReady}
+        />
       </div>
     </div>
   );
